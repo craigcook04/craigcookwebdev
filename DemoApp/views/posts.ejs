@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="public/app.css">
+
+
+<style>
+    body {
+        color: purple;
+    }
+</style>
+
+<h1>The Posts Page</h1>
+<% for(var i = 0; i < posts.length; i++) { %>
+    <li><%=posts[i].title%> - <strong><%= posts[i].author%></strong></li>
+<% } %>
+
+<% posts.forEach(function(e) { %>
+    <li>
+        <%=e.title%> - <strong><%=e.author%></strong>
+    </li>
+<% }) %>
