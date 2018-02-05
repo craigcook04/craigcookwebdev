@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var request = require('request');
 
 app.use(bodyParser.urlencoded({extended: true})); // Need this to retrieve body information when retrieving POST requests, and when creating named inputs
 app.use(express.static('public')); // accessing local folders
@@ -15,6 +16,31 @@ app.post("/addfriend", function(req, res) {
     res.redirect('/friends');
     
 });
+
+
+
+
+app.get('/', function(req, res) {
+    res.render('movie')
+});
+
+app.get('/movie', function(req, res) {
+    var movie =  req.query.search;
+    var url = 'http://www.omdbapi.com/?s=' + movie + '&apikey=thewdb';
+    request(url, function(error, response, body) {
+        if(!error && response.statusCode == 200) {
+            var parsedData = JSON.parse(body);
+            res.render('results', {movieData: parsedData});
+        }
+    });
+});
+
+
+
+
+
+
+
 
 // "/" => "Hi There!!"
 app.get('/:faveAnimal', function(req, res) { // "/" specifies the route to be traced into.. request and response are objects
@@ -58,6 +84,13 @@ app.get("/r/:subredditName/comments/:id/:title", function(req, res) { // ":" is 
 app.get("*", function(req, res) { // "*" encompasses all and will catch everything that passes through it first; therefore we need to handle the "*" request until after we have already defined all other routes
    console.log("You are not on a predefined route on this website"); 
 });
+
+
+
+
+////////////////////////////////////////
+/////////   MANDATORY CODE   ///////////
+////////////////////////////////////////
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Server has started");

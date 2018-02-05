@@ -1,0 +1,14 @@
+// Express is an open sourced framework that we use to organize our code
+// think of a framework as the mad libs (main scaffolding) that holds the code together, and we just add the parts that make our program unique
+
+// whereas we control a library and its contents at our own consent
+
+// frameworks are 'heavier' than libraries
+
+// frameworks give us the link to backend HTTP requests
+
+// <%=  %> tells the html file that we want it to read it as js
+
+    // NO "=" when you don't want to actually add the return value to the HTML string... lose the "=" when you wrap logical (if) statements
+    
+// Add a name="" property to an input to use it in app.js for example to add to a list of existing elements
