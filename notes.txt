@@ -12,3 +12,15 @@
     // NO "=" when you don't want to actually add the return value to the HTML string... lose the "=" when you wrap logical (if) statements
     
 // Add a name="" property to an input to use it in app.js for example to add to a list of existing elements
+
+// Replace the '=' with '-' within the ejs tag '<%- %>' to let the file evaluate the code rather than just printing it as a string
+
+    // Sanitizing (npm express sanitizer) inputs is when we get rid of any script tags inside of html input message from user
+
+// npm method-override to use PUT in html
+
+// (post) => (post._id)
+
+
+
+
