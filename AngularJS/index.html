@@ -7,20 +7,24 @@
         <link rel='stylesheet' href='style.css'/>
         <script src='script.js'></script>
     </head>
-    
-    <body>
-        <div ng-app='main' ng-controller='formCtrl' class='container'>
-            <form class='well input-form'>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" ng-model='data.email' class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+
+    <body ng-app='demoApp' ng-controller='MainCtrl'>
+        <div class='container'>
+            <form class='well input-form' name='inputform' ng-submit='submit()'>
+                <div class="form-group has-feedback" ng-class="{'has-success': inputform.email.$dirty && inputform.email.$valid, 'has-error': inputform.email.$dirty && inputform.email.$invalid}">
+                    <label class='control-label' for="exampleInputEmail1">Email address</label>
+                    <input type="email" name='email' ng-model='data.email' class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': inputform.email.$dirty && inputform.email.$valid, 'glyphicon-remove': inputform.email.$dirty && inputform.email.$invalid}"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group has-feedback" ng-class="{'has-success': inputform.password.$dirty && inputform.password.$valid, 'has-error': inputform.password.$dirty && inputform.password.$invalid}">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" ng-model='data.password' class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" name='password' ng-model='data.password' class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                    <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': inputform.password.$dirty && inputform.password.$valid, 'glyphicon-remove': inputform.password.$dirty && inputform.password.$invalid}"></span>
                 </div>
+                <button class='btn btn-primary' type='submit' ng-disabled='inputform.$invalid || inputform.$pristine'>Test Button</button>
             </form>
             <p>{{data}}</p>
+            <p>{{inputform.email}}<br>{{inputform.password}}</p>
         </div> 
     </body>
 
